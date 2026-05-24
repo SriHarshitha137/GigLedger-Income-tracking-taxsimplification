@@ -1,0 +1,10 @@
+node_modules/
+
+# ignore env files everywhere
+.env
+client/.env
+server/.env
+
+# ignore node_modules everywhere
+client/node_modules/
+server/node_modules/

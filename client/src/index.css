@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #16a34a;
+  --navy: #0f172a;
+  --orange: #f97316;
+  --green: #16a34a;
+  --background: #f0fdf4;
+  --card: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #4b6357;
+  --border: #bbf7d0;
+  --danger: #dc2626;
+  --muted: #dcfce7;
+  --field: #ffffff;
+  --shadow: rgba(20, 83, 45, 0.1);
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --primary: #22c55e;
+  --navy: #ffffff;
+  --orange: #fb923c;
+  --green: #22c55e;
+  --background: #000000;
+  --card: #111111;
+  --text-primary: #f8fafc;
+  --text-secondary: #a3a3a3;
+  --border: #262626;
+  --danger: #f87171;
+  --muted: #171717;
+  --field: #0b0b0b;
+  --shadow: rgba(0, 0, 0, 0.45);
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at 8% 12%, rgba(22, 163, 74, 0.14), transparent 28%),
+    radial-gradient(circle at 92% 5%, rgba(249, 115, 22, 0.12), transparent 24%),
+    var(--background);
+  color: var(--text-primary);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-theme='dark'] [class*="text-slate-900"],
+[data-theme='dark'] [class*="text-slate-800"],
+[data-theme='dark'] [class*="text-slate-700"] {
+  color: var(--text-primary) !important;
+}
+
+[data-theme='dark'] [class*="text-slate-600"],
+[data-theme='dark'] [class*="text-slate-500"],
+[data-theme='dark'] [class*="text-slate-400"] {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme='dark'] [class*="bg-white"],
+[data-theme='dark'] [class*="bg-slate-50"] {
+  background-color: var(--card) !important;
+}
+
+[data-theme='dark'] input,
+[data-theme='dark'] select,
+[data-theme='dark'] textarea {
+  background-color: var(--field);
+  color: var(--text-primary);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@layer components {
+  .page-shell {
+    @apply animate-[fadeIn_0.28s_ease] space-y-6 p-4 pb-24 md:p-8;
+  }
+
+  .auth-shell {
+    @apply grid min-h-screen lg:grid-cols-[1.05fr_0.95fr];
+    background: var(--background);
+  }
+
+  .gig-hero {
+    @apply relative hidden overflow-hidden bg-slate-950 p-10 text-white lg:block;
+    background:
+      linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(29, 78, 216, 0.88)),
+      radial-gradient(circle at 18% 22%, rgba(249, 115, 22, 0.36), transparent 28%);
+  }
+
+  .gig-hero::before {
+    content: "Swiggy  Zomato  Ola  Uber  Rapido  Dunzo";
+    position: absolute;
+    inset: auto -90px 90px auto;
+    max-width: 620px;
+    transform: rotate(-18deg);
+    color: rgba(255, 255, 255, 0.08);
+    font-size: 58px;
+    font-weight: 900;
+    line-height: 1.35;
+    letter-spacing: 0;
+  }
+
+  .rider-scene {
+    @apply absolute bottom-16 left-10 right-10 h-56 rounded-[28px] border border-white/10 bg-white/10 shadow-2xl backdrop-blur;
+  }
+
+  .rider-scene::before {
+    content: "";
+    position: absolute;
+    left: 11%;
+    bottom: 34px;
+    width: 220px;
+    height: 92px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #f97316, #16a34a);
+    box-shadow: 260px 4px 0 -18px rgba(29, 78, 216, 0.95);
+  }
+
+  .rider-scene::after {
+    content: "";
+    position: absolute;
+    left: 14%;
+    bottom: 18px;
+    width: 60px;
+    height: 60px;
+    border: 10px solid #ffffff;
+    border-radius: 999px;
+    box-shadow: 140px 0 0 -10px #ffffff, 318px 0 0 -2px #ffffff;
+    opacity: 0.92;
+  }
+
+  .app-card {
+    @apply rounded-2xl border border-[var(--border)] p-5 transition-all duration-200 ease-in-out hover:-translate-y-px;
+    background: var(--card);
+    color: var(--text-primary);
+    box-shadow: 0 12px 40px var(--shadow);
+  }
+
+  .stat-card {
+    @apply rounded-2xl border p-5 transition-all duration-200 ease-in-out hover:-translate-y-px;
+    background: var(--card);
+    border-color: var(--border);
+    color: var(--text-primary);
+    box-shadow: 0 12px 40px var(--shadow);
+  }
+
+  .btn-primary {
+    @apply rounded-[10px] bg-[var(--primary)] px-4 py-3 text-sm font-semibold text-white shadow-[0_10px_24px_rgba(29,78,216,0.22)] transition-all duration-200 ease-in-out hover:-translate-y-px hover:shadow-[0_14px_30px_rgba(29,78,216,0.34)] active:translate-y-0 disabled:opacity-60;
+  }
+
+  .btn-secondary {
+    @apply rounded-[10px] border border-[var(--border)] px-4 py-3 text-sm font-semibold transition-all duration-200 ease-in-out hover:-translate-y-px;
+    background: var(--card);
+    color: var(--text-primary);
+  }
+
+  .btn-danger {
+    @apply rounded-[10px] bg-[var(--danger)] px-4 py-3 text-sm font-semibold text-white transition-all duration-200 ease-in-out hover:-translate-y-px hover:shadow-[0_12px_24px_rgba(220,38,38,0.24)];
+  }
+
+  .field {
+    @apply h-12 rounded-[10px] border border-[var(--border)] px-3 text-sm outline-none transition-all duration-200 ease-in-out focus:ring-4;
+    background: var(--field);
+    color: var(--text-primary);
+  }
+
+  .field-error {
+    @apply border-red-400 bg-red-50 focus:border-red-500 focus:ring-red-100;
+  }
+
+  .pill {
+    @apply rounded-full px-3 py-1 text-xs font-semibold;
+  }
+
+  .platform-swiggy { @apply bg-orange-100 text-orange-700; }
+  .platform-zomato { @apply bg-red-100 text-red-700; }
+  .platform-ola { @apply bg-slate-900 text-white; }
+  .platform-uber { @apply bg-zinc-100 text-zinc-900; }
+  .platform-rapido { @apply bg-yellow-100 text-yellow-800; }
+  .platform-dunzo { @apply bg-green-100 text-green-700; }
+  .platform-default { @apply bg-blue-100 text-blue-700; }
+
+  .fin-table {
+    @apply w-full border-separate border-spacing-0 text-left text-sm;
+  }
+
+  .fin-table th {
+    @apply px-4 py-3 text-xs font-semibold uppercase;
+    background: var(--muted);
+    color: var(--text-secondary);
+  }
+
+  .fin-table td {
+    @apply px-4 py-3;
+    color: var(--text-primary);
+  }
+
+  .fin-table tbody tr:nth-child(even) {
+    background: var(--muted);
+  }
+
+  .fin-table tbody tr {
+    @apply transition-colors duration-200 hover:bg-blue-50/60;
+  }
+
+  .skeleton {
+    @apply animate-pulse rounded-xl bg-gradient-to-r from-slate-100 via-slate-200 to-slate-100;
+    background-size: 200% 100%;
+    animation: shimmer 1.2s infinite linear;
+  }
+
+  .toast-ui {
+    @apply fixed right-4 top-4 z-50 rounded-2xl border bg-white px-4 py-3 text-sm shadow-[0_18px_50px_rgba(15,23,42,0.16)] animate-[slideIn_0.25s_ease];
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
